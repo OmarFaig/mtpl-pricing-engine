@@ -1,0 +1,24 @@
+{
+  "layer": "bronze",
+  "created_at": "2026-08-02T21:55:50.993461+00:00",
+  "command": "python data/bronze/bronze.py",
+  "git_commit": null,
+  "upstream_hashes": {
+    "freq": "928c8804bb466ed36f21290f6c8be4c436eb2f0121f93f5c8908f7dd70cf49cf",
+    "sev": "7ac11ef5d643fa6a77d9803eacc234c553cac38c418f133e547e39ec82557236"
+  },
+  "outputs": {
+    "freq": {
+      "path": "data/bronze/freq.parquet",
+      "sha256": "12a269060bc6d60a9cd94f1f405f88d49a3e2f583cf08ab8df35cc8426b72eee",
+      "rows": 678013,
+      "bytes": 7224342
+    },
+    "sev": {
+      "path": "data/bronze/sev.parquet",
+      "sha256": "43623c0bd18796bb2c7e4cae9b57925a823f344f162a8c5693c4d7dda480fabd",
+      "rows": 26639,
+      "bytes": 200661
+    }
+  }
+}

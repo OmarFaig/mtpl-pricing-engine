@@ -1,0 +1,25 @@
+{
+  "layer": "silver",
+  "created_at": "2026-08-02T21:55:52.024713+00:00",
+  "command": "python data/silver/silver.py",
+  "git_commit": null,
+  "upstream_hashes": {
+    "freq": "12a269060bc6d60a9cd94f1f405f88d49a3e2f583cf08ab8df35cc8426b72eee",
+    "sev": "43623c0bd18796bb2c7e4cae9b57925a823f344f162a8c5693c4d7dda480fabd"
+  },
+  "outputs": {
+    "policies": {
+      "path": "data/silver/policies.parquet",
+      "sha256": "16aa780071ba2552e07043bcfbd14a1950fd21fb6438689ebf48142b712dec0e",
+      "rows": 678013,
+      "bytes": 7507547
+    }
+  },
+  "extra": {
+    "exposure_cap": 1.0,
+    "claim_nb_cap": 4,
+    "rows_exposure_capped": 1224,
+    "rows_claim_nb_capped": 9,
+    "orphan_claims_dropped": 195
+  }
+}

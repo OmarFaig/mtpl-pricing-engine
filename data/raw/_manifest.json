@@ -1,0 +1,37 @@
+{
+  "layer": "raw",
+  "created_at": "2026-08-02T21:53:27.558731+00:00",
+  "command": "python data/raw/raw.py",
+  "git_commit": null,
+  "upstream_hashes": {},
+  "outputs": {
+    "freq": {
+      "path": "data/raw/freq.parquet",
+      "sha256": "928c8804bb466ed36f21290f6c8be4c436eb2f0121f93f5c8908f7dd70cf49cf",
+      "rows": 678013,
+      "bytes": 7427116
+    },
+    "sev": {
+      "path": "data/raw/sev.parquet",
+      "sha256": "7ac11ef5d643fa6a77d9803eacc234c553cac38c418f133e547e39ec82557236",
+      "rows": 26639,
+      "bytes": 276727
+    }
+  },
+  "extra": {
+    "sources": {
+      "freq": {
+        "openml_id": 41214,
+        "openml_name": "freMTPL2freq",
+        "openml_version": 1,
+        "openml_md5_checksum": "f8875568bf0ca622929105197e2db613"
+      },
+      "sev": {
+        "openml_id": 41215,
+        "openml_name": "freMTPL2sev",
+        "openml_version": 1,
+        "openml_md5_checksum": "24cc74449e3931cb1aad0d43a12e7a6e"
+      }
+    }
+  }
+}

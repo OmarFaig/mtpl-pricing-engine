@@ -1,0 +1,9 @@
+# Data pipeline (raw -> bronze -> silver -> gold)
+openml==0.15.1
+pandas==2.3.3
+pyarrow==25.0.0
+numpy==2.2.6
+duckdb==1.5.5
+
+# Modeling (not used by the pipeline itself, kept for the pricing model that consumes gold)
+scikit-learn==1.7.2

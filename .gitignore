@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environment
+venv/
+.venv/
+
+# Claude Code
+.claude/
+CLAUDE.local.md
+
+# Data layer outputs — regenerated deterministically from raw.py onward.
+# Manifests ARE tracked: they're the provenance record, not the data.
+data/raw/*.parquet
+data/raw/*.pkl
+data/bronze/*.parquet
+data/silver/*.parquet
+data/gold/*.parquet
+
+# OS / editor cruft
+.DS_Store
+*.swp
