@@ -1,25 +1,105 @@
 {
   "layer": "silver",
-  "created_at": "2026-08-02T21:55:52.024713+00:00",
-  "command": "python data/silver/silver.py",
-  "git_commit": null,
-  "upstream_hashes": {
-    "freq": "12a269060bc6d60a9cd94f1f405f88d49a3e2f583cf08ab8df35cc8426b72eee",
-    "sev": "43623c0bd18796bb2c7e4cae9b57925a823f344f162a8c5693c4d7dda480fabd"
-  },
-  "outputs": {
+  "created_at_utc": "2026-08-07T22:52:16.483136+00:00",
+  "upstream_hash": "3a9d0b7a3127af744845356203ad9755cd1a85eea95f0879f6bb413726c27b7e",
+  "tables": {
     "policies": {
-      "path": "data/silver/policies.parquet",
-      "sha256": "16aa780071ba2552e07043bcfbd14a1950fd21fb6438689ebf48142b712dec0e",
-      "rows": 678013,
-      "bytes": 7507547
+      "rows": 668897,
+      "cols": 26,
+      "file_sha256": "fd6e6c02036ff4e4807e8351c8fc7e59d03d37eac13ffa5f7a3d7b0c3e53d01d",
+      "content_sha256": "ed6ca176b8acb07f040f01670245d509e6e7990367ba8b3e0c6a6ac779a65aff",
+      "schema": {
+        "policy_id": "int64",
+        "claim_nb": "int64",
+        "exposure": "float64",
+        "area": "object",
+        "veh_power": "int64",
+        "veh_age": "int64",
+        "driv_age": "int64",
+        "bonus_malus": "int64",
+        "veh_brand": "object",
+        "veh_gas": "object",
+        "density": "float64",
+        "region": "object",
+        "_ingested_at": "datetime64[us, UTC]",
+        "_source_hash": "object",
+        "n_covariate_duplicates": "int64",
+        "is_duplicate_group": "bool",
+        "total_claim_amount": "float64",
+        "n_severity_rows": "int64",
+        "max_claim_amount": "float64",
+        "capped_claim_amount": "float64",
+        "excess_claim_amount": "float64",
+        "has_severity_record": "bool",
+        "claim_count_mismatch": "bool",
+        "claim_frequency": "float64",
+        "avg_claim_amount": "float64",
+        "pure_premium": "float64"
+      }
     }
   },
+  "layer_bundle_sha256": "ef987ada9dff0d4174de8c10dce412f137275f6f353b1e8f762af9dd4d6368ae",
   "extra": {
-    "exposure_cap": 1.0,
-    "claim_nb_cap": 4,
-    "rows_exposure_capped": 1224,
-    "rows_claim_nb_capped": 9,
-    "orphan_claims_dropped": 195
+    "clean_stats": [
+      {
+        "step": "cap_exposure",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 1224,
+        "note": "clipped Exposure to 1.0"
+      },
+      {
+        "step": "cap_claim_nb",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 9,
+        "note": "clipped ClaimNb to 4"
+      },
+      {
+        "step": "flag_duplicates",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 257911,
+        "note": "flagged rows sharing identical covariates"
+      },
+      {
+        "step": "aggregate_severity",
+        "rows_in": 26639,
+        "rows_out": 24950,
+        "rows_affected": 26639,
+        "note": "grouped severity rows by IDpol"
+      },
+      {
+        "step": "cap_large_losses",
+        "rows_in": 26639,
+        "rows_out": 24950,
+        "rows_affected": 89,
+        "note": "capped 89 claims at 50000.00 (fixed)"
+      },
+      {
+        "step": "join_frequency_severity",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 9116,
+        "note": "9116 policies have claims but no severity record"
+      },
+      {
+        "step": "rename_snake_case",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 0,
+        "note": "renamed columns to snake_case"
+      },
+      {
+        "step": "assert_levels",
+        "rows_in": 678013,
+        "rows_out": 678013,
+        "rows_affected": 0,
+        "note": "all categorical levels within config"
+      }
+    ],
+    "large_loss_load": 37.71996118969848,
+    "large_loss_cap": 50000.0,
+    "quarantine_rows": 9116
   }
 }

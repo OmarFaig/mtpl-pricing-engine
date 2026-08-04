@@ -1,31 +1,50 @@
-PY := venv/bin/python
+.PHONY: data gold train evaluate test lint typecheck build serve all
 
-.PHONY: all raw bronze silver gold clean rebuild
+data: data/raw/_manifest.json data/bronze/_manifest.json data/silver/_manifest.json
 
-all: gold
+data/raw/_manifest.json:
+	mtpl ingest
 
-raw: data/raw/_manifest.json
-data/raw/_manifest.json: data/raw/raw.py
-	$(PY) data/raw/raw.py
+data/bronze/_manifest.json: data/raw/_manifest.json
+	mtpl bronze
 
-bronze: data/bronze/_manifest.json
-data/bronze/_manifest.json: data/bronze/bronze.py data/raw/_manifest.json
-	$(PY) data/bronze/bronze.py
+data/silver/_manifest.json: data/bronze/_manifest.json
+	mtpl silver
 
-silver: data/silver/_manifest.json
-data/silver/_manifest.json: data/silver/silver.py data/bronze/_manifest.json
-	$(PY) data/silver/silver.py
+gold: data/gold/frequency/_manifest.json data/gold/severity/_manifest.json data/gold/pure_premium/_manifest.json
 
-gold: data/gold/_manifest.json
-data/gold/_manifest.json: data/gold/gold.py data/silver/_manifest.json
-	$(PY) data/gold/gold.py
+data/gold/frequency/_manifest.json: data/silver/_manifest.json
+	mtpl gold --use-case frequency
 
-# Delete everything downstream of raw. Raw itself is left alone: it's an
-# external extract pinned by OpenML dataset id + version, not a derived
-# artifact, so there's nothing to "rebuild" about it beyond re-fetching.
-clean:
-	rm -f data/bronze/*.parquet data/bronze/_manifest.json \
-	      data/silver/*.parquet data/silver/_manifest.json \
-	      data/gold/*.parquet data/gold/_manifest.json
+data/gold/severity/_manifest.json: data/silver/_manifest.json
+	mtpl gold --use-case severity
 
-rebuild: clean all
+data/gold/pure_premium/_manifest.json: data/silver/_manifest.json
+	mtpl gold --use-case pure_premium
+
+train: gold
+	mtpl train frequency --register-as mtpl_frequency
+	mtpl train severity --register-as mtpl_severity
+	mtpl train tweedie --register-as mtpl_pure_premium
+	mtpl train challenger --use-case frequency
+	mtpl train challenger --use-case pure_premium
+
+evaluate:
+	mtpl evaluate --run-id $(RUN_ID)
+
+test:
+	pytest
+
+lint:
+	ruff check .
+
+typecheck:
+	mypy src/
+
+build:
+	docker build -t mtpl-pricing-engine .
+
+serve:
+	mtpl serve
+
+all: data gold train test

@@ -1,24 +1,42 @@
 {
   "layer": "bronze",
-  "created_at": "2026-08-02T21:55:50.993461+00:00",
-  "command": "python data/bronze/bronze.py",
-  "git_commit": null,
-  "upstream_hashes": {
-    "freq": "928c8804bb466ed36f21290f6c8be4c436eb2f0121f93f5c8908f7dd70cf49cf",
-    "sev": "7ac11ef5d643fa6a77d9803eacc234c553cac38c418f133e547e39ec82557236"
-  },
-  "outputs": {
+  "created_at_utc": "2026-08-07T22:51:08.928787+00:00",
+  "upstream_hash": "2c4c81385bde0a6528587a2d85639ed720c346caeb76b31efb1d3e0d92b3e534",
+  "tables": {
     "freq": {
-      "path": "data/bronze/freq.parquet",
-      "sha256": "12a269060bc6d60a9cd94f1f405f88d49a3e2f583cf08ab8df35cc8426b72eee",
       "rows": 678013,
-      "bytes": 7224342
+      "cols": 14,
+      "file_sha256": "b4c1850cb798fc5b4d6dd60d7e590fd3c53206fd1c867441bece3bc687a14bfa",
+      "content_sha256": "454ab9acfbd6ec3adb5cac8a8f692e2520718c4cbbc9e53a49e866c695cee0b6",
+      "schema": {
+        "IDpol": "int64",
+        "ClaimNb": "int64",
+        "Exposure": "float64",
+        "Area": "object",
+        "VehPower": "int64",
+        "VehAge": "int64",
+        "DrivAge": "int64",
+        "BonusMalus": "int64",
+        "VehBrand": "object",
+        "VehGas": "object",
+        "Density": "float64",
+        "Region": "object",
+        "_ingested_at": "datetime64[us, UTC]",
+        "_source_hash": "object"
+      }
     },
     "sev": {
-      "path": "data/bronze/sev.parquet",
-      "sha256": "43623c0bd18796bb2c7e4cae9b57925a823f344f162a8c5693c4d7dda480fabd",
       "rows": 26639,
-      "bytes": 200661
+      "cols": 4,
+      "file_sha256": "50fb622599107d0c5ec728f1ac23477ccc9e2427cfb41c08c5ecfe26c534052d",
+      "content_sha256": "89fb6391f2cbf430f30ec487e513bc264a214e20866f71a8f619e148c4459c65",
+      "schema": {
+        "IDpol": "int64",
+        "ClaimAmount": "float64",
+        "_ingested_at": "datetime64[us, UTC]",
+        "_source_hash": "object"
+      }
     }
-  }
+  },
+  "layer_bundle_sha256": "3a9d0b7a3127af744845356203ad9755cd1a85eea95f0879f6bb413726c27b7e"
 }

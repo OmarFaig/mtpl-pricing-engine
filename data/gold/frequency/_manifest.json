@@ -1,0 +1,89 @@
+{
+  "layer": "gold",
+  "created_at_utc": "2026-08-07T23:04:14.822386+00:00",
+  "upstream_hash": "ef987ada9dff0d4174de8c10dce412f137275f6f353b1e8f762af9dd4d6368ae",
+  "tables": {
+    "test": {
+      "rows": 133780,
+      "cols": 18,
+      "file_sha256": "333397057c4083a107348ebe4171cc115a595dcb524e40f339fc8402ce311dc9",
+      "content_sha256": "4ee0e7a21fee51868ebcc15971e4fdbecc8401bea052de21e47d940d6b7fccc2",
+      "schema": {
+        "policy_id": "int64",
+        "exposure": "float64",
+        "driv_age": "int64",
+        "veh_age": "int64",
+        "veh_power": "int64",
+        "bonus_malus": "int64",
+        "log_density": "float64",
+        "area": "object",
+        "veh_brand": "object",
+        "veh_gas": "object",
+        "region": "object",
+        "veh_power_band": "object",
+        "driv_age_band": "object",
+        "veh_age_band": "object",
+        "is_new_vehicle": "int64",
+        "claim_nb": "int64",
+        "y": "float64",
+        "sample_weight": "float64"
+      }
+    },
+    "train": {
+      "rows": 401337,
+      "cols": 18,
+      "file_sha256": "4dfcc417bd858081092af3867699930bfec6ea283ebea9960748ea308167ac0d",
+      "content_sha256": "62727388f5ba7aa0fbd357ea7931d353a000e51b73c6e3bb6e6df17b023ca4f6",
+      "schema": {
+        "policy_id": "int64",
+        "exposure": "float64",
+        "driv_age": "int64",
+        "veh_age": "int64",
+        "veh_power": "int64",
+        "bonus_malus": "int64",
+        "log_density": "float64",
+        "area": "object",
+        "veh_brand": "object",
+        "veh_gas": "object",
+        "region": "object",
+        "veh_power_band": "object",
+        "driv_age_band": "object",
+        "veh_age_band": "object",
+        "is_new_vehicle": "int64",
+        "claim_nb": "int64",
+        "y": "float64",
+        "sample_weight": "float64"
+      }
+    },
+    "val": {
+      "rows": 133780,
+      "cols": 18,
+      "file_sha256": "01cc05a343777d8e37b4843014f75c6fcbb063859aa992213dce2bc0fb37f818",
+      "content_sha256": "d9a382058c852afde503cd8a32bb4d876bd287b984f09af5111733ebb320a731",
+      "schema": {
+        "policy_id": "int64",
+        "exposure": "float64",
+        "driv_age": "int64",
+        "veh_age": "int64",
+        "veh_power": "int64",
+        "bonus_malus": "int64",
+        "log_density": "float64",
+        "area": "object",
+        "veh_brand": "object",
+        "veh_gas": "object",
+        "region": "object",
+        "veh_power_band": "object",
+        "driv_age_band": "object",
+        "veh_age_band": "object",
+        "is_new_vehicle": "int64",
+        "claim_nb": "int64",
+        "y": "float64",
+        "sample_weight": "float64"
+      }
+    }
+  },
+  "layer_bundle_sha256": "cacc4a394d9b4f430197dbf3c3a6c41534033570e5074ce5d502fc812938bee0",
+  "extra": {
+    "use_case": "frequency"
+  }
+}

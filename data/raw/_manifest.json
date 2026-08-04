@@ -1,23 +1,40 @@
 {
   "layer": "raw",
-  "created_at": "2026-08-02T21:53:27.558731+00:00",
-  "command": "python data/raw/raw.py",
-  "git_commit": null,
-  "upstream_hashes": {},
-  "outputs": {
+  "created_at_utc": "2026-08-07T22:49:48.836511+00:00",
+  "upstream_hash": null,
+  "tables": {
     "freq": {
-      "path": "data/raw/freq.parquet",
-      "sha256": "928c8804bb466ed36f21290f6c8be4c436eb2f0121f93f5c8908f7dd70cf49cf",
       "rows": 678013,
-      "bytes": 7427116
+      "cols": 12,
+      "file_sha256": "928c8804bb466ed36f21290f6c8be4c436eb2f0121f93f5c8908f7dd70cf49cf",
+      "content_sha256": "d55892a7ab26eee3941051e7f2aa7f5e21ecc7fb261e313da533c82b1980ce19",
+      "schema": {
+        "IDpol": "float64",
+        "ClaimNb": "uint8",
+        "Exposure": "float64",
+        "Area": "category",
+        "VehPower": "uint8",
+        "VehAge": "uint8",
+        "DrivAge": "uint8",
+        "BonusMalus": "uint8",
+        "VehBrand": "category",
+        "VehGas": "object",
+        "Density": "float64",
+        "Region": "category"
+      }
     },
     "sev": {
-      "path": "data/raw/sev.parquet",
-      "sha256": "7ac11ef5d643fa6a77d9803eacc234c553cac38c418f133e547e39ec82557236",
       "rows": 26639,
-      "bytes": 276727
+      "cols": 2,
+      "file_sha256": "7ac11ef5d643fa6a77d9803eacc234c553cac38c418f133e547e39ec82557236",
+      "content_sha256": "463cb7633b178fdd139f68536be7cbd43abacc904548d71bd6381deebbc459d8",
+      "schema": {
+        "IDpol": "float64",
+        "ClaimAmount": "float64"
+      }
     }
   },
+  "layer_bundle_sha256": "2c4c81385bde0a6528587a2d85639ed720c346caeb76b31efb1d3e0d92b3e534",
   "extra": {
     "sources": {
       "freq": {
