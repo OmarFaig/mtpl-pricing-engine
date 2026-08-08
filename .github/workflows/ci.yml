@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: install dependencies
+        run: pip install -e ".[dev]"
+
+      - name: ruff
+        run: ruff check .
+
+      - name: mypy
+        run: mypy src/
+
+      - name: pytest
+        run: pytest --cov=mtpl --cov-report=term-missing
+
+      - name: docker build
+        run: |
+          mkdir -p artifacts mlruns
+          docker build -t mtpl-pricing-engine .
